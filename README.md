@@ -1,12 +1,6 @@
 # LexiMath
 
-<!-- SCREENSHOTS: save them in docs/screenshots/ and remove this comment block to show them.
-<p align="center">
-  <img src="docs/screenshots/homepage.png" width="32%" alt="LexiMath homepage" />
-  <img src="docs/screenshots/solver.png" width="32%" alt="Handwritten equation solved step by step" />
-  <img src="docs/screenshots/settings.png" width="32%" alt="Dyslexia-friendly display settings" />
-</p>
--->
+![LexiMath: live handwriting detection, homepage, and detected equation with symbol confidence](docs/leximath-banner.png)
 
 A dyslexia-friendly maths learning web app for secondary school students, built as my final year project.
 Students photograph or upload a **handwritten equation**, and LexiMath recognises each symbol, solves the equation,
