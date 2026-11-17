@@ -2,36 +2,41 @@
 
 ![LexiMath: live handwriting detection, homepage, and detected equation with symbol confidence](docs/leximath-banner.png)
 
-A dyslexia-friendly maths learning web app for secondary school students, built as my final year project.
-Students photograph or upload a **handwritten equation**, and LexiMath recognises each symbol, solves the equation,
-and explains every step in simple **English or Bahasa Malaysia**, with animations that show how the equation changes.
+A **dyslexia-friendly maths learning web app** for secondary school students, built as my final year project.
+Students photograph or upload a handwritten equation, and LexiMath recognises each symbol, solves the equation,
+and explains every step in simple **English or Bahasa Malaysia**.
 
-> **Source code:** this is a final year project, so the full source code and trained models are kept private.
-> They're available on request for interviews. This repo shows what the project does, how it's built, and two code samples.
+## The problem
+
+Students with dyslexia often find maths harder because of the reading involved: dense text, small fonts, and
+explanations that skip steps. Typing an equation into a calculator app is also hard when the symbols themselves are
+easy to mix up. LexiMath lets students work from their own handwriting, and explains each step slowly, in their
+language, on a page they can adjust for comfortable reading.
 
 ## Features
 
-- **Handwritten equation recognition**: upload a photo or use the camera, and each symbol is detected and classified
-- **Step-by-step solutions**: every step is explained in plain language, and the final answer is checked against an exact maths solver
-- **Visual step animations**: shows which term moved, combined or was divided at each step
-- **Bilingual**: switch between English and Bahasa Malaysia
-- **Learning hub**: Form 1 Mathematics textbook, quizzes, and video lessons
-- **Reading comfort settings**: dyslexia-friendly fonts (Lexend), text size, soft background themes, focus mode, reduced motion and high contrast
+| Area | Features | Status |
+|---|---|---|
+| **Recognition** | Upload a photo or use the camera · live detection · each symbol shown with its confidence | Done |
+| **Solving** | Exact answer from a maths solver · step-by-step explanation in EN/BM · answer checked before it is shown | Done |
+| **Visual learning** | Animations that show which term moved, combined or was divided at each step | Done |
+| **Learning hub** | Form 1 Mathematics textbook · quizzes · video lessons | Done |
+| **Reading comfort** | Lexend font · text size · 5 soft background themes · focus mode · reduced motion · high contrast · EN/BM switch | Done |
 
-## Technical Stack
+## Tech stack
 
-### Core Frameworks
-- **Flask** - Python web server and page routing
-- **TensorFlow / Keras** - custom **CNN-ViT** model that classifies each handwritten symbol
-- **Ultralytics YOLO** - custom-trained detector that finds each symbol in the photo
-- **SymPy** - solves the equation exactly, so the answer never depends on the AI
-- **Claude (Anthropic API)** - writes friendly, student-level explanations for each step
-- **HTML, CSS and JavaScript** - front end with camera capture and quizzes
+| Layer | Technology |
+|---|---|
+| Frontend | HTML, CSS, JavaScript (camera capture, quizzes, accessibility settings) |
+| Backend | Python, Flask |
+| Symbol detection | Ultralytics YOLO (custom-trained) and a classic image-processing pipeline |
+| Symbol recognition | TensorFlow / Keras **CNN-ViT** model (custom-trained, 22 classes) |
+| Maths solving | SymPy |
+| Explanations | Claude (Anthropic API), with a built-in fallback |
 
-### Recognised Symbols
-Digits `0-9`, variables `a b c x y z`, operators `+ - / =` and brackets `( )` (22 classes).
+**Recognised symbols:** digits `0-9`, variables `a b c x y z`, operators `+ - / =` and brackets `( )`.
 
-## Architecture
+## How it works
 
 ```
 Photo or camera image
@@ -55,14 +60,22 @@ Photo or camera image
                    scaling) and turned into an animation with EN/BM captions
 ```
 
-### Design Decisions
-- **The AI never decides the answer.** SymPy computes it, and Claude only explains it. If the explanation's answer doesn't match, it is retried, and if the AI is unavailable, a simpler explanation is generated without it.
-- **Two detection pipelines.** YOLO handles messy real-world photos, while the classic pipeline needs no extra model and can be switched on with one setting.
-- **Accessibility first.** Settings follow common dyslexia-friendly guidance: clear fonts, adjustable size, soft backgrounds instead of pure white, and fewer distractions.
+## Design decisions
 
-## Code Samples
+| Decision | Why |
+|---|---|
+| The AI never decides the answer | SymPy computes it and Claude only explains it, so a wrong AI step can't give a student a wrong answer |
+| Two detection pipelines | YOLO handles messy real-world photos; the classic pipeline needs no extra model and can be switched on with one setting |
+| Accessibility first | Clear fonts, adjustable size, soft backgrounds instead of pure white, and fewer distractions, following common dyslexia-friendly guidance |
+
+## Code samples
 
 | File | What it shows |
 |---|---|
 | [`samples/preferences.js`](samples/preferences.js) | Reading-comfort settings: themes, fonts, text size, focus mode, high contrast, reduced motion and EN/BM switching, saved in the browser |
-| [`samples/settings_modal.html`](samples/settings_modal.html) | The accessible settings dialog (ARIA roles, labelled controls, bilingual text) |
+| [`samples/settings_modal.html`](samples/settings_modal.html) | The accessible settings dialog: ARIA roles, labelled controls, bilingual text |
+
+## Source code
+
+This is a final year project, so the full source code and trained models are kept private.
+They're available on request for interviews.
