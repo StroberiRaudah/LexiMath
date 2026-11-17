@@ -1,0 +1,94 @@
+<div class="modal-overlay hidden" id="settings-modal" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+  <div class="settings-panel" tabindex="-1">
+    <div class="settings-panel-header">
+      <div>
+        <h2 id="settings-title"
+            data-en="Display Settings"
+            data-bm="Tetapan Paparan">Display Settings</h2>
+        <p class="card-text"
+           data-en="Choose fonts, text size, theme, and focus mode for your reading comfort."
+           data-bm="Pilih fon, saiz teks, tema, dan mod fokus untuk keselesaan bacaan anda.">Choose fonts, text size, theme, and focus mode for your reading comfort.</p>
+      </div>
+      <button type="button" class="icon-button" id="close-settings" aria-label="Close settings">✕</button>
+    </div>
+
+    <div class="settings-group">
+      <label class="settings-label" for="font-select"
+             data-en="Font style" data-bm="Gaya fon">Font style</label>
+      <select id="font-select" class="settings-select" aria-label="Choose font style">
+        <option value="lexend">Lexend</option>
+        <option value="open-sans">Open Sans</option>
+        <option value="arial">Arial</option>
+        <option value="verdana">Verdana</option>
+      </select>
+    </div>
+
+    <div class="settings-group">
+      <div class="settings-row">
+        <div>
+          <p class="settings-label"
+             data-en="Text size" data-bm="Saiz teks">Text size</p>
+          <div class="control-row">
+            <button type="button" class="text-size-control" id="control-small">A-</button>
+            <button type="button" class="text-size-control" id="control-normal">A</button>
+            <button type="button" class="text-size-control" id="control-large">A+</button>
+          </div>
+        </div>
+        <p class="settings-note"
+           data-en="Adjust all content text for easy reading."
+           data-bm="Laraskan semua teks kandungan untuk bacaan mudah.">Adjust all content text for easy reading.</p>
+      </div>
+    </div>
+
+    <div class="settings-group">
+      <label class="settings-label" for="theme-select"
+             data-en="Theme" data-bm="Tema">Theme</label>
+      <select id="theme-select" class="settings-select" aria-label="Choose background theme">
+        <option value="soft-blue">Soft blue</option>
+        <option value="cream">Cream</option>
+        <option value="light-grey">Light grey</option>
+        <option value="off-white">Off-white</option>
+        <option value="pink-haze">Pink haze</option>
+      </select>
+    </div>
+
+    <div class="settings-group settings-toggle-row">
+      <label class="toggle-label" for="focus-mode-toggle"
+             data-en="Focus mode" data-bm="Mod fokus">Focus mode</label>
+      <button type="button" class="toggle-button" id="focus-mode-toggle" aria-pressed="false">Off</button>
+    </div>
+
+    <div class="settings-group settings-toggle-row">
+      <label class="toggle-label" for="animation-toggle"
+             data-en="Reduce motion" data-bm="Kurangkan pergerakan">Reduce motion</label>
+      <button type="button" class="toggle-button" id="animation-toggle" aria-pressed="false">Off</button>
+    </div>
+
+    <div class="settings-group settings-toggle-row">
+      <label class="toggle-label" for="contrast-toggle"
+             data-en="High contrast mode" data-bm="Mod kontras tinggi">High contrast mode</label>
+      <button type="button" class="toggle-button" id="contrast-toggle" aria-pressed="false">Off</button>
+    </div>
+
+    <div class="settings-group">
+      <div class="settings-row">
+        <div>
+          <p class="settings-label"
+             data-en="Language" data-bm="Bahasa">Language</p>
+          <div class="control-row">
+            <button type="button" class="text-size-control is-active" id="lang-en">EN</button>
+            <button type="button" class="text-size-control" id="lang-bm">BM</button>
+          </div>
+        </div>
+        <p class="settings-note"
+           data-en="Switch between English and Bahasa Malaysia."
+           data-bm="Tukar antara Bahasa Inggeris dan Bahasa Malaysia.">Switch between English and Bahasa Malaysia.</p>
+      </div>
+    </div>
+
+    <div class="settings-actions">
+      <button type="button" class="secondary-button" id="reset-settings"
+              data-en="Reset settings" data-bm="Tetapkan semula">Reset settings</button>
+    </div>
+  </div>
+</div>
